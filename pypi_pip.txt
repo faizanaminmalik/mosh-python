@@ -1,0 +1,13 @@
+pip3 install requests (module name)
+pip3 --update install pip3
+pip3 install requests==2.9.0 (to install specific version)
+pip3 install requests==2.9.* (latest compatible ver)
+pip3 list
+pip3 uninstall requests
+pip3 install requests~=2.9.0 (latest compatible ver like 2.9.2)
+
+Tu use module,
+import requests
+response = requests.get("http://google.com")
+print (response)
+

@@ -1,0 +1,22 @@
+suppose in our machine, we have a module requests 20.0.2 installed
+But for a project, we need specific version 19.0.1 of requests
+we cant just uninstall 20.0.2 and install 19.0.1 as other projects will impact
+to solve this, we will cr8 a virtual env for the project in a specific folder
+the venv will contain all its dependencies of specific versions
+
+commad to create venv:
+python3 -m venv env
+
+This will create DIr env
+env
+|
+---> lib
+      -->python3.7
+            ----> site-packages (This folder will contain all python packages specific to this venv only
+---> bin
+      --> activate
+      to activate in win: \env\bin\activate.bat
+      to activate in linux: source env/bin/activate
+      Then we can install any module
+      pip3 install requests==2.9.0
+      deactivate

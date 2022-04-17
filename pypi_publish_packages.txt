@@ -1,0 +1,36 @@
+Create account on pypi.org
+
+1. We need few tools, that we need to install
+    pip3 install setuptools wheel twine
+2. Make a directory for you package preferably with package name
+    mkdir faizpdf
+3. Create a high level dir with same name as of package
+    mkdir faizpdf/faizpdf
+4. We can other other dirs for tests and data etc
+    mkdir faizpdf/tests, faizpdf/data
+5. In faizpdf/faizpdf, create a __init__.py file so that python will see this as package
+    touch faizpdf/faizpdf/__init__.py
+6. Create 2 sample module
+    touch faizpdf/faizpdf/pdf2text.py faizpdf/faizpdf/pdf2image.py
+7. In order to add the package to pypi, we need to add 3 files at root of project faizpdf directory
+    a. setup.py
+        import setuptools
+        from pathlib import Path
+        setuptools.setup(
+            name="faizpdf",
+            version=1.0,
+            long_description=Path("README.md").read_text(),
+            packages=setuptools.find_packages(exclude=["tests", "data"])
+    b. README.md
+        sample page of project
+    c. LICENSE
+        chhosealicense.com
+
+8. Now we can publish. Run the below command first to build distributions
+    python3 setup.py sdist bdist_wheel (cr8 2 dist packages: source distribution, build distribution)
+    This will create a dirctory dist containing the 2 files
+9. Now we have distributions, we can now upload to pypi.org
+    twine upload dist/*
+    will ask for creds
+    username:
+    password:

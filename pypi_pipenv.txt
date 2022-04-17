@@ -1,0 +1,49 @@
+venv has many advantages, but we need to memorize few command
+pipenv combines both pip and venv in single tool chain
+pipenv is like NPM (node package manager)
+pipenv is a dependency manager for python projects
+
+pip3 install pipenv
+we dont need any env folder as pipenv will automatically create virtual directory
+
+to install a package instead of using pip we use pipenv
+go to your projects folder:
+pipenv install requests
+--> This will create 2 files, Pipfile and Pipfile.lock
+--> This will also create a venv but that venv is not in project dir ro save space (pipenv --venv): path of venv dir
+--> To activate this projects pipenv, run pipenv shell
+pipenv shell
+python3 app.py
+exit
+
+#######################################################################
+Pipfile and Pipfile.lock
+
+When we create a pipenv, 2 files get automatically created
+These files keep track of python packages and dependency versions
+Pipfile : contains infor about packages we installed (like requests version 2.0.*)
+Pipfile.lock: contains a list of all packages amd dependencies installed along with their metadata like exact versions
+These 2 files can be used to create a venv anywhere even if we delete venv
+
+rm -rf <path_to_venv>
+
+pipenv install (This command will take a look at pipfile and pipfile.lock and automatically create a venv for project)
+
+pipenv install --ignore-pipfile (since pipfile may contain wildcards for versions like requests==2.0.*, but pifile.lock will contain exact version like requests==2.0.3
+
+##########################################################################
+dependencies
+
+pipenv graph (will graph out packages installed with all their dependencies)
+requests==2.20.1
+    - certifi
+    -urllib
+    - idna
+
+pipenv uninstall requests
+requests will be deleted, but the dependencies will still exist because pipenv wont know if the're somewhere else too
+
+pipenv update --outdated
+All outdated packages will be updated, but if we have specified ver in pipfile, it will be skipped
+
+pipenv update requests
